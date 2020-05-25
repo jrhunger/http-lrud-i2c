@@ -1,8 +1,8 @@
 import time
 import BaseHTTPServer
-import smbus
+import smbus2
 
-bus=smbus.SMBus(2)
+bus=smbus2.SMBus(2)
 address=0x05
 
 HOST_NAME = 'chip'
@@ -58,14 +58,22 @@ $(document).ready(function(){
 
 <table border=0>
 <tr>
-<td><a href="#" id="left" class="thumbutton"> &lt;-- </a</td>
-<td><a href="#" id="up" class="thumbutton"> @ </a</td>
-<td><a href="#" id="right" class="thumbutton"> --&gt; </a</td>
+  <td></td>
+  <td><a href="#" id="up" class="thumbutton">&nbsp;</a></td>
+  <td></td>
 </tr>
-<tr><td></td>
-<td><a href="#" id="down" class="thumbutton"> |<br>
-v</a></td>
-<td></td></tr>
+
+<tr>
+  <td><a href="#" id="left" class="thumbutton">&nbsp;</a</td>
+  <td></td>
+  <td><a href="#" id="right" class="thumbutton">&nbsp;</a</td>
+</tr>
+
+<tr>
+  <td></td>
+  <td><a href="#" id="down" class="thumbutton">&nbsp;</a></td>
+  <td></td>
+</tr>
 </table>
 </body>
 </html>
@@ -84,12 +92,16 @@ class MyHandler(BaseHTTPServer.BaseHTTPRequestHandler):
     print str(count) + " GET " + s.path
     if s.path == "/left":
       bus.write_i2c_block_data(address, 0, StringToBytes("l"))
+      s.send_response(200)
     elif s.path == "/right":
       bus.write_i2c_block_data(address, 0, StringToBytes("r"))
-    elif s.path == "/rotate":
+      s.send_response(200)
+    elif s.path == "/up":
       bus.write_i2c_block_data(address, 0, StringToBytes("u"))
+      s.send_response(200)
     elif s.path == "/down":
       bus.write_i2c_block_data(address, 0, StringToBytes("d"))
+      s.send_response(200)
     else:
       s.send_response(200)
       s.send_header("Content-type", "text/html")
