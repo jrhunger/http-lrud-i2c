@@ -7,3 +7,5 @@ This is not complicated stuff, mostly a stub to allow manual control to test the
 ## assumptions
 Running on C.H.I.P from NextThing.  Might work on RaspberryPi, or anywhere else the Python smbus module works.
 
+## references
+Responsive button CSS lifted from https://fdossena.com/?p=html5cool/buttons/i.frag

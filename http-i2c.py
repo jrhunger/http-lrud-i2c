@@ -19,28 +19,54 @@ indexPage = """
 <html>
 <head>
 <meta name="viewport" content="width=device-width, user-scalable=no">
+<style>
+a.thumbutton{
+  display:inline-block;
+  padding:0.35em 1.2em;
+  border:0.1em solid #FFFFFF;
+  margin:0 0.3em 0.3em 0;
+  border-radius:0.12em;
+  box-sizing: border-box;
+  text-decoration:none;
+  font-weight:300;
+  color:#FFFFFF;
+  text-align:center;
+  transition: all 0.2s;
+}
+a.thumbutton.hover{
+  color:#000000;
+  background-color:#FFFFFF;
+}
+@media all and (max-width:30em){
+  a.button1{
+    display:block;
+    margin:0.4em auto;
+  }
+}
+</style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
 $(document).ready(function(){
-  $("button").click(function(){
+  $("a.thumbutton").click(function(){
     $.get("/" + this.id, function(data, status){});
+    return false;
   });
 });
 </script>
 </head>
-<body>
+<body bgcolor=#000000;>
 
 <table border=0>
 <tr>
-<td><button id="left"> &lt;-- </button></td>
-<td><button id="rotate"> @ </button></td>
-<td><button id="right"> --&gt; </button></td>
+<td><a href="#" id="left" class="thumbutton"> &lt;-- </a</td>
+<td><a href="#" id="up" class="thumbutton"> @ </a</td>
+<td><a href="#" id="right" class="thumbutton"> --&gt; </a</td>
 </tr>
 <tr><td></td>
-<td><button id="down">|<br/>v</td>
+<td><a href="#" id="down" class="thumbutton"> |<br>
+v</a></td>
 <td></td></tr>
 </table>
-
 </body>
 </html>
 """
