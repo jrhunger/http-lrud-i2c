@@ -1,0 +1,4 @@
+#!/bin/bash
+wget https://files.pythonhosted.org/packages/6a/06/80a6928e5cbfd40c77c08e06ae9975c2a50109586ce66435bd8166ce6bb3/smbus2-0.3.0.tar.gz
+
+tar --strip-components=1 -xvf smbus2-0.3.0.tar.gz smbus2-0.3.0/smbus2
